@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce2367waosbib"]
+
+[ext_resource type="Script" path="res://Horse.gd" id="1_71shq"]
+[ext_resource type="PackedScene" uid="uid://b6tlgke67qxjx" path="res://newHorsiee.glb" id="2_vr0px"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xnco"]
+albedo_color = Color(1, 0, 0.0235294, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qblnd"]
+material = SubResource("StandardMaterial3D_1xnco")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_41qmm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jlik4"]
+size = Vector3(0.31, 0.15, 0.5)
+
+[node name="Horse" type="CharacterBody3D" groups=["Horse"]]
+script = ExtResource("1_71shq")
+
+[node name="newHorsiee" parent="." instance=ExtResource("2_vr0px")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.706305, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Horse"]]
+visible = false
+mesh = SubResource("CapsuleMesh_qblnd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Horse"]]
+shape = SubResource("CapsuleShape3D_41qmm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." groups=["Horse"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0261747, 0.621915, -0.31983)
+visible = false
+mesh = SubResource("BoxMesh_jlik4")
+
+[node name="StationTimer" type="Timer" parent="." groups=["Horse"]]
+
+[node name="WalkTimer" type="Timer" parent="." groups=["Horse"]]
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="Head" type="Marker3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11857, -0.695485)
+
+[connection signal="timeout" from="StationTimer" to="." method="_on_station_timer_timeout"]
+[connection signal="timeout" from="WalkTimer" to="." method="_on_walk_timer_timeout"]

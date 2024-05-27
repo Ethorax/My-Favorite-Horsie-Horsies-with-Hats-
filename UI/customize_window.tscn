@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi0hown40qrrt"]
+
+[ext_resource type="Script" path="res://UI/customize_window.gd" id="1_8dngt"]
+
+[node name="CustomizeWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+script = ExtResource("1_8dngt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 65
+bbcode_enabled = true
+text = "[center]Customize[center]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 544.855)
+layout_mode = 2
+
+[node name="VScrollBar" type="ScrollContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer/HBoxContainer/VScrollBar"]
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer/HBoxContainer/VScrollBar/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 9

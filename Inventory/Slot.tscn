@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://42c745ldxpdb"]
+
+[ext_resource type="Script" path="res://Inventory/Slot.gd" id="1_50stu"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_453rr"]
+
+[node name="Slot" type="PanelContainer"]
+offset_right = 120.0
+offset_bottom = 120.0
+script = ExtResource("1_50stu")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(120, 120)
+render_target_update_mode = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1000, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_453rr")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1000, 2.36704)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

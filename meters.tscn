@@ -1,0 +1,121 @@
+[gd_scene load_steps=10 format=3 uid="uid://jcjx34gw0m5g"]
+
+[ext_resource type="Script" path="res://meters.gd" id="1_up0g7"]
+
+[sub_resource type="Gradient" id="Gradient_ib2ko"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f246k"]
+gradient = SubResource("Gradient_ib2ko")
+width = 150
+height = 25
+
+[sub_resource type="Gradient" id="Gradient_85ibo"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.690196, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tiddi"]
+gradient = SubResource("Gradient_85ibo")
+width = 150
+height = 25
+
+[sub_resource type="Gradient" id="Gradient_dtulv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.152941, 0.937255, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ybhoc"]
+gradient = SubResource("Gradient_dtulv")
+width = 150
+height = 25
+
+[sub_resource type="Gradient" id="Gradient_ig60g"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.105882, 0.470588, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kuhjy"]
+gradient = SubResource("Gradient_ig60g")
+width = 150
+height = 25
+
+[node name="Meters" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 581.0
+offset_right = -958.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_up0g7")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -41.0
+offset_right = 242.0
+offset_bottom = 66.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 2
+offset_left = 8.0
+offset_top = -27.0
+offset_right = 344.0
+offset_bottom = 173.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Nums" type="TextureProgressBar" parent="HBoxContainer/HBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+tooltip_text = "How full your pony is."
+value = 38.0
+texture_under = SubResource("GradientTexture2D_f246k")
+texture_progress = SubResource("GradientTexture2D_tiddi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(60.265, 0)
+layout_mode = 2
+text = "Nums"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Love" type="TextureProgressBar" parent="HBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_direction = 1
+layout_mode = 2
+tooltip_text = "How much love you've given your pony.  <3"
+value = 52.0
+stretch_margin_right = 1000
+texture_under = SubResource("GradientTexture2D_f246k")
+texture_progress = SubResource("GradientTexture2D_ybhoc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(38.845, 0)
+layout_mode = 2
+text = "Love"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Neatness" type="TextureProgressBar" parent="HBoxContainer/HBoxContainer3"]
+layout_direction = 1
+layout_mode = 2
+tooltip_text = "How clean your Pony is."
+value = 32.0
+texture_under = SubResource("GradientTexture2D_f246k")
+texture_progress = SubResource("GradientTexture2D_kuhjy")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/HBoxContainer3"]
+texture_filter = 1
+custom_minimum_size = Vector2(93.75, 0)
+layout_mode = 2
+text = "Neatness"

@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdrr1i787t5ih"]
+
+[ext_resource type="Texture2D" uid="uid://b0lkt6uddl14y" path="res://horseemblems.png" id="1_4f6u5"]
+[ext_resource type="Script" path="res://UI/barn_menu.gd" id="1_egqo2"]
+[ext_resource type="PackedScene" uid="uid://b67caluon7msq" path="res://brushing_mini_game.tscn" id="3_l5ifi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7h35"]
+atlas = ExtResource("1_4f6u5")
+region = Rect2(1, 64, 61, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyfuy"]
+atlas = ExtResource("1_4f6u5")
+region = Rect2(62, 64, 68, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du3a5"]
+atlas = ExtResource("1_4f6u5")
+region = Rect2(135, 64, 57, 64)
+
+[node name="BarnMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_egqo2")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 934.0
+offset_right = 1152.0
+offset_bottom = 72.0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="FoodButton" type="Button" parent="PanelContainer/VBoxContainer"]
+modulate = Color(0.724995, 0.721309, 3.85046e-07, 1)
+layout_mode = 2
+tooltip_text = "Feed your pony."
+icon = SubResource("AtlasTexture_w7h35")
+
+[node name="PoopButton" type="Button" parent="PanelContainer/VBoxContainer"]
+modulate = Color(0.79678, 0.497286, 0.318596, 1)
+layout_mode = 2
+tooltip_text = "Clean up fecal matter."
+icon = SubResource("AtlasTexture_lyfuy")
+
+[node name="BrushButton" type="Button" parent="PanelContainer/VBoxContainer"]
+modulate = Color(0.0143354, 0.771104, 0.771106, 1)
+layout_mode = 2
+tooltip_text = "Brush your pony. :)"
+icon = SubResource("AtlasTexture_du3a5")
+
+[node name="Brushing MiniGame" parent="." instance=ExtResource("3_l5ifi")]
+visible = false
+
+[connection signal="button_down" from="PanelContainer/VBoxContainer/FoodButton" to="." method="_on_food_button_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/BrushButton" to="." method="_on_brush_button_button_down"]

@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://v2uuacjxertg"]
+
+[ext_resource type="Script" path="res://room.gd" id="1_f7l4p"]
+[ext_resource type="Texture2D" uid="uid://cmfv7o8lhs58j" path="res://BoardFloor.png" id="1_hy8yo"]
+[ext_resource type="Script" path="res://CameraController.gd" id="1_ywjjg"]
+[ext_resource type="PackedScene" uid="uid://vvvity1q5gyy" path="res://UI.tscn" id="3_el4ln"]
+[ext_resource type="PackedScene" uid="uid://cdrr1i787t5ih" path="res://UI/barn_menu.tscn" id="4_n7g4d"]
+[ext_resource type="PackedScene" uid="uid://jcjx34gw0m5g" path="res://meters.tscn" id="5_3xsa7"]
+[ext_resource type="PackedScene" uid="uid://cyr1omf26jp0t" path="res://money_display.tscn" id="6_348x3"]
+[ext_resource type="PackedScene" uid="uid://ce2367waosbib" path="res://horse.tscn" id="6_ca5yv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eph6d"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6myf3"]
+albedo_texture = ExtResource("1_hy8yo")
+uv1_scale = Vector3(17.08, 17.08, 17.08)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6rcvr"]
+material = SubResource("StandardMaterial3D_6myf3")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c56yb"]
+size = Vector3(100, 1, 100)
+
+[node name="Room" type="Node3D"]
+script = ExtResource("1_f7l4p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_eph6d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_6rcvr")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.963854, 0.266431, 0, -0.266431, 0.963854, 2.08033, 7.13571, 37.9357)
+script = ExtResource("1_ywjjg")
+target = NodePath("../Horse")
+speed = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("3_el4ln")]
+
+[node name="BarnMenu" parent="CanvasLayer" instance=ExtResource("4_n7g4d")]
+mouse_filter = 1
+
+[node name="Meters" parent="CanvasLayer" instance=ExtResource("5_3xsa7")]
+anchors_preset = -1
+anchor_top = 0.836
+anchor_right = 0.206
+offset_top = 39.272
+offset_right = -43.312
+
+[node name="Money Display" parent="CanvasLayer" instance=ExtResource("6_348x3")]
+anchors_preset = -1
+anchor_left = 0.913
+anchor_top = 0.917
+offset_left = 0.223999
+offset_top = -0.216064
+offset_right = -49.0
+offset_bottom = -29.0
+scale = Vector2(2, 2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.72815, 5.20161, 54.5101)
+
+[node name="Horse" parent="." instance=ExtResource("6_ca5yv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.49904, 20.0038)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.2054, 0)
+shape = SubResource("BoxShape3D_c56yb")
+
+[node name="LoveTimer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[connection signal="button_down" from="CanvasLayer/Control/ActivitiesWindow/Button" to="." method="_on_button_button_down"]
+[connection signal="timeout" from="LoveTimer" to="." method="_on_love_timer_timeout"]
+
+[editable path="CanvasLayer/Control"]

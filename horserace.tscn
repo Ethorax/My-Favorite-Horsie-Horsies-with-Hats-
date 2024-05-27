@@ -1,0 +1,123 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2bsbtwv5x3sw"]
+
+[ext_resource type="Script" path="res://horserace.gd" id="1_fe51w"]
+[ext_resource type="PackedScene" uid="uid://bdyoe8mkxx3dp" path="res://race_horse.tscn" id="2_u5ncy"]
+[ext_resource type="PackedScene" uid="uid://cf4n5iagude52" path="res://FinishLine.tscn" id="3_i2uvg"]
+
+[sub_resource type="Curve3D" id="Curve3D_fdvd3"]
+_data = {
+"points": PackedVector3Array(-5.75488, 0.797642, 0.244175, 5.755, 0, -0.244, 2.994, 0, -7.007, -1, 0, -4, 1, 0, 4, 7.108, 0, 8.567, 2.605, 0, 1.5, 0, 0, 0, 1.86988, 0, 11.8956, -1.34, 0, 0, -1.395, 0, 0, -15.3414, 0, 3.66174, -1.49, 0, 0, -0.805, 0, 0, -14.6413, 0, -4.48685, -1.915, 0, 0, 0, 0, 0, -8.67009, 0, -8.67009, 0, 0, 0, 0, 0, 0, 3.031, 0, -7.006),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufga1"]
+albedo_color = Color(0.347755, 0.222467, 0.0241558, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccgx7"]
+albedo_color = Color(0, 0.572549, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yhaxa"]
+material = SubResource("StandardMaterial3D_ccgx7")
+size = Vector2(1000, 1000)
+
+[sub_resource type="Animation" id="Animation_yubjx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D/RaceHorse:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_irrvj"]
+resource_name = "run"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D/RaceHorse:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0.261799), Vector3(0, 1.5708, -0.261799), Vector3(0, 1.5708, 0.261799)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a3v7f"]
+_data = {
+"RESET": SubResource("Animation_yubjx"),
+"run": SubResource("Animation_irrvj")
+}
+
+[sub_resource type="Environment" id="Environment_p237t"]
+background_mode = 1
+background_color = Color(0.643137, 0.843137, 0.654902, 1)
+
+[node name="RaceGame" type="Node3D"]
+script = ExtResource("1_fe51w")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_fdvd3")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+material_override = SubResource("StandardMaterial3D_ufga1")
+polygon = PackedVector2Array(-0.399737, -0.00943783, -0.385916, 0.0945961, 0.983397, 0.0892934, 1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.140799, 0, -0.990032, 0, 1, 0, 0.990032, 0, -0.140799, 3.03099, 0, -7.006)
+progress = 73.4438
+
+[node name="RaceHorse" parent="Path3D/PathFollow3D" instance=ExtResource("2_u5ncy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.624058, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(0.0848087, 0.316162, -0.944914, 0, 0.948324, 0.317303, 0.996404, -0.0269101, 0.0804261, -3.19884, 2.58378, 2.38419e-07)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_yhaxa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a3v7f")
+}
+
+[node name="Node3D" parent="." instance=ExtResource("3_i2uvg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.51217, -0.365034, -6.69564)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p237t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.560003, 0.828491, 0, -0.828491, 0.560003, 0.105046, 4.29386, 0)
+
+[node name="Container" type="Panel" parent="."]
+offset_left = 547.0
+offset_right = 624.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container"]
+layout_mode = 2
+offset_right = 79.0
+offset_bottom = 39.0
+bbcode_enabled = true
+text = "[center]1/3[/center]"
+
+[connection signal="body_entered" from="Node3D" to="." method="_on_node_3d_body_entered"]

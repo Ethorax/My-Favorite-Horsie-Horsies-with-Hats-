@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://vvvity1q5gyy"]
+
+[ext_resource type="Script" path="res://MainUI.gd" id="1_fgl1h"]
+[ext_resource type="Texture2D" uid="uid://b0lkt6uddl14y" path="res://horseemblems.png" id="1_jpydq"]
+[ext_resource type="PackedScene" uid="uid://dgi7k8b2manm5" path="res://UI/activities_window.tscn" id="2_3af4f"]
+[ext_resource type="PackedScene" uid="uid://bi0hown40qrrt" path="res://UI/customize_window.tscn" id="4_m410l"]
+[ext_resource type="PackedScene" uid="uid://bxug8cncoll2q" path="res://shop_window.tscn" id="5_w1ha6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvbxj"]
+atlas = ExtResource("1_jpydq")
+region = Rect2(1, 0, 61, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqoyt"]
+atlas = ExtResource("1_jpydq")
+region = Rect2(62, 0, 68, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtj3l"]
+atlas = ExtResource("1_jpydq")
+region = Rect2(135, 0, 57, 64)
+
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fgl1h")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="ShopButton" type="Button" parent="PanelContainer/VBoxContainer"]
+modulate = Color(0.164706, 1, 0.32549, 1)
+layout_mode = 2
+tooltip_text = "Home"
+icon = SubResource("AtlasTexture_lvbxj")
+
+[node name="CustomizeButton" type="Button" parent="PanelContainer/VBoxContainer"]
+modulate = Color(1, 0.403978, 0.726759, 1)
+layout_mode = 2
+tooltip_text = "Customize"
+icon = SubResource("AtlasTexture_fqoyt")
+
+[node name="ActivitiesButton" type="Button" parent="PanelContainer/VBoxContainer"]
+modulate = Color(0.0143354, 0.771104, 0.771106, 1)
+layout_mode = 2
+tooltip_text = "Activities"
+icon = SubResource("AtlasTexture_xtj3l")
+
+[node name="ActivitiesWindow" parent="." instance=ExtResource("2_3af4f")]
+visible = false
+layout_mode = 1
+
+[node name="Button" type="Button" parent="ActivitiesWindow"]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 96.0
+offset_right = 848.0
+offset_bottom = 205.0
+theme_override_font_sizes/font_size = 71
+text = "Horse Race"
+
+[node name="CustomizeWindow" parent="." instance=ExtResource("4_m410l")]
+visible = false
+layout_mode = 1
+
+[node name="ShopWindow" parent="." instance=ExtResource("5_w1ha6")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_down" from="PanelContainer/VBoxContainer/ShopButton" to="." method="_on_shop_button_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/CustomizeButton" to="." method="_on_customize_button_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/ActivitiesButton" to="." method="_on_activities_button_button_down"]

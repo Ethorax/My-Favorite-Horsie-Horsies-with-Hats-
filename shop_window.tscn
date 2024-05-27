@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxug8cncoll2q"]
+
+[ext_resource type="Script" path="res://shop_window.gd" id="1_d1qh3"]
+
+[node name="ShopWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d1qh3")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Roulette[center]"
+
+[node name="Button" type="Button" parent="Panel/RichTextLabel"]
+layout_mode = 2
+offset_left = 525.0
+offset_top = 277.0
+offset_right = 626.0
+offset_bottom = 331.0
+text = "Take a Spin!
+$100"
+
+[connection signal="button_up" from="Panel/RichTextLabel/Button" to="." method="_on_button_button_up"]

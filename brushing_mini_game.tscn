@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://b67caluon7msq"]
+
+[ext_resource type="Script" path="res://Brushing MiniGame.gd" id="1_xj2vt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yg0a0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7ldj"]
+radius = 88.0
+height = 324.0
+
+[node name="Brushing MiniGame" type="Node2D"]
+script = ExtResource("1_xj2vt")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 211.0
+offset_top = 30.0
+offset_right = 979.0
+offset_bottom = 542.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(768, 512)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2000, 2.10369)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2000, 0)
+mesh = SubResource("CapsuleMesh_yg0a0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(592, 287)
+shape = SubResource("CapsuleShape2D_t7ldj")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0.962657, 0.00746489, 0.883101, 1)
+offset_left = 81.0
+offset_top = 57.0
+offset_right = 156.0
+offset_bottom = 585.0
+value = 10.81
+fill_mode = 3
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
