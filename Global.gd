@@ -1,6 +1,6 @@
 extends Node
 
-var money : int = 1000
+var money : int = 100
 
 
 var inventory_ui
@@ -17,3 +17,6 @@ var feed : bool = false
 var head_wear : String = ""
 var foot_wear : String = ""
 var face_wear : String = ""
+
+
+var slot_index = 1

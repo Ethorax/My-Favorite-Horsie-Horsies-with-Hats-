@@ -19,6 +19,7 @@ func _on_area_3d_body_entered(body):
 		body.clean_up_food()
 		
 		Global.pony_hunger +=20
+		Global.money += 20
 		if(Global.pony_hunger>100):
 			Global.pony_hunger=100
 		

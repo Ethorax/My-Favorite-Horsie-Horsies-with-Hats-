@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnk3et8rsehdo"]
+
+[ext_resource type="PackedScene" uid="uid://c1pw1hyt20aig" path="res://Hat Models/Takeoutbox.glb" id="1_t0lqb"]
+
+[node name="Takeoutbox" instance=ExtResource("1_t0lqb")]
+
+[node name="Cube_003" parent="." index="0"]
+transform = Transform3D(0.950506, -0.310706, 0, 0.310706, 0.950506, 0, 0, 0, 1, 0, 0, 0)

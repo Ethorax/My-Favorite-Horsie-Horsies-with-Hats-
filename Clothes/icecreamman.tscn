@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjb6ljgppcsno"]
+
+[ext_resource type="PackedScene" uid="uid://cjca84wtefmxp" path="res://Hat Models/icecreamman.glb" id="1_rqygv"]
+
+[node name="icecreamman" instance=ExtResource("1_rqygv")]

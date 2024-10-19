@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjin3bb1ukqja"]
+
+[ext_resource type="PackedScene" uid="uid://5vawe60tw5mx" path="res://Hat Models/witch_hat.glb" id="1_0k32a"]
+
+[node name="witch_hat" instance=ExtResource("1_0k32a")]
+
+[node name="Cone" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

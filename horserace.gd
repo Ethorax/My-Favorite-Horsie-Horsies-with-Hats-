@@ -6,14 +6,18 @@ var right : bool = false
 
 @onready var top_speed = 2.0
 @onready var accel = 0.5
-@onready var deaccel = 0.1
+@onready var deaccel = 0.05
 var speed = 0
 
 
 var lap = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if(Global.head_wear!=""):
+		
+		var hat = load(Global.head_wear).instantiate()
+		hat.scale = Vector3(0.2,0.2,0.2)
+		$Path3D/PathFollow3D/RaceHorse/head.add_child(hat)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,5 +44,13 @@ func _on_node_3d_body_entered(body):
 	lap += 1
 	$Container/RichTextLabel.text = "[center]" + str(lap) + "/5"
 	if(lap > 5):
+		
+		if($Container/RaceTimer.seconds < 5):
+			Global.money += 90
+		elif $Container/RaceTimer.seconds < 10:
+			Global.money += 60
+		else:
+			Global.money += 30
+		
 		print("You win")
 		get_tree().change_scene_to_file("res://room.tscn")

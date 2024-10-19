@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://cpwds0w7tpfim"]
+
+[ext_resource type="Script" path="res://Inventory/item_data.gd" id="1_bpjpd"]
+
+[resource]
+script = ExtResource("1_bpjpd")
+name = "Pirate Cap"
+description = "Arrrrr... The high seas and such..."
+item = "res://Clothes/piratehat.tscn"
+clothing_slot = "Head"

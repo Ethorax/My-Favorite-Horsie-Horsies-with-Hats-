@@ -3,7 +3,8 @@ extends PanelContainer
 #signal slot_clicked(index: int, button: int)
 var slot_item : ItemData
 @onready var sub_viewport = $SubViewportContainer/SubViewport
-@onready var camera_3d = $SubViewportContainer/SubViewport/Camera3D
+@onready var camera_3d = $SubViewportContainer/SubViewport/Node3D/Camera3D
+@onready var view_holder = $SubViewportContainer/SubViewport/Node3D
 
 	
 func set_slot_data(slot_data : SlotData) -> void:
@@ -11,8 +12,11 @@ func set_slot_data(slot_data : SlotData) -> void:
 	tooltip_text = "%s\n%s" % [item_data.name, item_data.description]
 	slot_item = item_data
 	var slot_image = load(slot_item.item).instantiate()
-	slot_image.global_position = $SubViewportContainer/SubViewport/MeshInstance3D.global_position
-	sub_viewport.add_child(slot_image)
+	slot_image.global_position = $SubViewportContainer/SubViewport/Node3D/MeshInstance3D.global_position
+	view_holder.add_child(slot_image)
+	
+	view_holder.position = Vector3(0,-1000*Global.slot_index,0)
+	Global.slot_index += 1
 	
 	$SubViewportContainer.show()
 

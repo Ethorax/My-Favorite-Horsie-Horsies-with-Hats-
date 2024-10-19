@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c85ifvcip3ctl"]
+
+[ext_resource type="PackedScene" uid="uid://degxt5q7767ll" path="res://Extra_sturdy_horsie_fence.glb" id="1_umrd1"]
+
+[node name="Extra_sturdy_horsie_fence" instance=ExtResource("1_umrd1")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(0.21281, 0, 0, 0, 0.21281, 0, 0, 0, 0.21281, 0, 0, 0)

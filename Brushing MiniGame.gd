@@ -16,6 +16,9 @@ func _on_area_2d_mouse_entered():
 
 func _on_area_2d_mouse_exited():
 	if(Global.pony_love < 100):
+		if(Global.pony_love < 100):
+			Global.money +=1
 		Global.pony_love += 2
 		if(Global.pony_love>100):
 			Global.pony_love=100
+			

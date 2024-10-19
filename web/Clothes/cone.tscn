@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb0i5tdroo5il"]
+
+[ext_resource type="PackedScene" uid="uid://ecvf73wj05vn" path="res://Hat Models/cone.glb" id="1_htq46"]
+
+[node name="cone" instance=ExtResource("1_htq46")]

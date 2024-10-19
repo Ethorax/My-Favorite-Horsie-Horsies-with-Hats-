@@ -15,6 +15,7 @@ material = SubResource("StandardMaterial3D_1xnco")
 size = Vector3(0.31, 0.15, 0.5)
 
 [node name="Horse" type="CharacterBody3D" groups=["Horse"]]
+transform = Transform3D(1.695, 0, 0, 0, 1.695, 0, 0, 0, 1.695, 0, 0, 0)
 script = ExtResource("1_71shq")
 
 [node name="newHorsiee" parent="." instance=ExtResource("2_vr0px")]

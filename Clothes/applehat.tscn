@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm1ftm35kuvrx"]
+
+[ext_resource type="PackedScene" uid="uid://dqt88mew1daae" path="res://Hat Models/Bombhat.glb" id="1_h20oo"]
+
+[node name="Bombhat" instance=ExtResource("1_h20oo")]

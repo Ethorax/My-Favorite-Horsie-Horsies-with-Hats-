@@ -31,3 +31,6 @@ mesh = SubResource("BoxMesh_vlans")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sh8wa")
+
+[node name="head" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.348128, 0.541297, 0)

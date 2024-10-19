@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://nf0uiryf8tde"]
+
+[ext_resource type="Script" path="res://Inventory/item_data.gd" id="1_6ocp7"]
+
+[resource]
+script = ExtResource("1_6ocp7")
+name = "Ice Cream Guy"
+description = "*We three kings*"
+item = "res://Clothes/icecreamman.tscn"
+clothing_slot = "Head"

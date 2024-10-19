@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://kcclyh78huky"]
+
+[ext_resource type="PackedScene" uid="uid://jwdsgkahf1ki" path="res://Hat Models/piratehat.glb" id="1_enjf0"]
+
+[node name="piratehat" instance=ExtResource("1_enjf0")]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bk22p0qofdg4i"]
+
+[ext_resource type="Script" path="res://Inventory/item_data.gd" id="1_qxs2k"]
+
+[resource]
+script = ExtResource("1_qxs2k")
+name = "Nevada Orb Thing?"
+description = "??????"
+item = "res://Clothes/nevada_orb.tscn"
+clothing_slot = "Head"

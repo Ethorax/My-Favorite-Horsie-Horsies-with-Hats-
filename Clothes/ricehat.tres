@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://d0feua4g538ul"]
+
+[ext_resource type="Script" path="res://Inventory/item_data.gd" id="1_uyyem"]
+
+[resource]
+script = ExtResource("1_uyyem")
+name = "Rice Hat"
+description = "Welcome to the rice fields"
+item = "res://Clothes/ricehat.tscn"
+clothing_slot = "Head"

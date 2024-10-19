@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://gdn0wwb04r8r"]
+
+[ext_resource type="Script" path="res://Inventory/item_data.gd" id="1_j17a2"]
+
+[resource]
+script = ExtResource("1_j17a2")
+name = "Papal Hat"
+description = "The holiest of horsies"
+item = "res://Clothes/popehat.tscn"
+clothing_slot = "Head"

@@ -1,12 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://b67caluon7msq"]
+[gd_scene load_steps=7 format=3 uid="uid://b67caluon7msq"]
 
 [ext_resource type="Script" path="res://Brushing MiniGame.gd" id="1_xj2vt"]
+[ext_resource type="PackedScene" uid="uid://b6tlgke67qxjx" path="res://newHorsiee.glb" id="2_f4mvx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yg0a0"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er3bx"]
+radius = 50.6332
+height = 176.522
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7ldj"]
-radius = 88.0
-height = 324.0
+radius = 98.7254
+height = 197.451
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70yye"]
+radius = 62.7708
+height = 125.542
 
 [node name="Brushing MiniGame" type="Node2D"]
 script = ExtResource("1_xj2vt")
@@ -32,13 +41,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2000, 2.10369)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2000, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_yg0a0")
+
+[node name="newHorsiee" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_f4mvx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1999.07, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(592, 287)
+position = Vector2(737, 198)
+rotation = -1.42265
+shape = SubResource("CapsuleShape2D_er3bx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(555, 315)
+rotation = -1.58698
+scale = Vector2(0.566828, 1.39849)
 shape = SubResource("CapsuleShape2D_t7ldj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(644, 250)
+rotation = -2.31267
+scale = Vector2(0.566828, 1.39849)
+shape = SubResource("CapsuleShape2D_70yye")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(0.962657, 0.00746489, 0.883101, 1)
